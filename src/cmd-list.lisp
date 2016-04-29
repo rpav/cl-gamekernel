@@ -11,12 +11,13 @@
                                 list-ptr
                                 &allow-other-keys)
   (call-next-method)
-  (with-slots (gk-list list-count) l
+  (with-slots (gk-list list-count list-fill) l
     (setf gk-list (or list-ptr
                       (make-gk-list subsystem prealloc)))
     (if list-ptr
         (setf list-count (c-ref list-ptr gk-list :ncmds))
-        (setf list-count prealloc))))
+        (setf list-count prealloc))
+    (setf (c-ref gk-list gk-list :ncmds) list-fill)))
 
 (defun ensure-cmd-list (list size)
   (with-slots (gk-list list-count) list
