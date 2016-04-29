@@ -40,18 +40,29 @@
         (let ((new (autowrap:realloc (b :lists) :pointer list-count)))
           (setf (b :lists) new))))))
 
-(defun bundle-append (bundle list)
+(defun bundle-append (bundle &rest lists)
   (with-slots (gk-bundle list-count list-fill refs) bundle
-    (with-slots (gk-list) list
-      (ensure-bundle-list bundle (1+ list-fill))
-      (setf (c-ref gk-bundle gk-bundle :lists * list-fill) (ptr gk-list))
-      (incf list-fill)
-      (setf (c-ref gk-bundle gk-bundle :nlists) list-fill)
-      (push list refs)
-      (values))))
+    (loop for list in lists
+          do (with-slots (gk-list) list
+               (ensure-bundle-list bundle (1+ list-fill))
+               (setf (c-ref gk-bundle gk-bundle :lists * list-fill) (ptr gk-list))
+               (incf list-fill)
+               (setf (c-ref gk-bundle gk-bundle :nlists) list-fill)
+               (push list refs)
+               (values)))))
 
 (defun bundle-clear (bundle)
   (with-slots (gk-bundle list-fill refs) bundle
     (setf refs nil)
     (setf list-fill 0)
     (setf (c-ref gk-bundle gk-bundle :nlists) 0)))
+
+(defmethod destroy-object ((b bundle))
+  (with-slots (gk-bundle) b
+    (bundle-clear b)
+    (destroy gk-bundle)))
+
+(defmacro with-bundle ((name &key (start 0) (sort :none) (prealloc 1)) &body body)
+  `(let ((,name (make-instance 'bundle :start ,start :sort ,sort :prealloc ,prealloc)))
+     (unwind-protect (progn ,@body)
+       (destroy ,name))))

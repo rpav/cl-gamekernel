@@ -18,7 +18,7 @@
    #:create #:process
 
    ;; Bundles, command lists, passes
-   #:bundle #:bundle-start #:bundle-sort
+   #:bundle #:bundle-start #:bundle-sort #:with-bundle
    #:pass
 
    #:bundle-append #:bundle-clear

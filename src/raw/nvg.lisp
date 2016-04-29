@@ -29,7 +29,7 @@
     (when key (setf (cmd :parent :key) key))
     (setf (cmd :parent :type) :font-create
           (cmd :name) name
-          (cmd :filename) filename)
+          (cmd :filename) (namestring filename))
     cmd))
 
 (defun gk-cmd-font-create-id (font-create-cmd)
