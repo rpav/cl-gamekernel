@@ -73,9 +73,9 @@ all of these functions **must** be called with a valid GL context
 active.  If you are using an sdl2kit `GL-WINDOW`, this happens
 automatically in callback methods.
 
-* `(gk:gk-create IMPL)`:  Currently only `:gl3` is implemented.  GL2.1 support should be added before too long.  This returns a GK context.
-* `(gk:gk-process CONTEXT BUNDLE)`:  Process a bundle in a given context.  Note that cross-context bundles are not necessarily valid; many resources loaded or created are bound to a given GL or GK context.
-* `(gk:destroy &rest OBJECTS)`:  Note the lack of `GK-`.  This is the protocol for destroying objects, including the context.  Merely freeing the context will *not* free all related resources, commands, lists, bundles, etc.  That's because those are intended, with some exception, to be managed client-side.  Many objects have finalizers which will let them be automatically collected.
+* `(gk:create IMPL)`:  Currently only `:gl3` is implemented.  GL2.1 support should be added before too long.  This returns a GK context.
+* `(gk:process CONTEXT BUNDLE)`:  Process a bundle in a given context.  Note that cross-context bundles are not necessarily valid; many resources loaded or created are bound to a given GL or GK context.
+* `(gk:destroy &rest OBJECTS)`:  This is the protocol for destroying objects, including the context.  Merely freeing the context will *not* free all related resources, commands, lists, bundles, etc.  That's because those are intended, with some exception, to be managed client-side.  Many objects have finalizers which will let them be automatically collected.
 
 Unlike the C API, however, `cl-gamekernel` provides a richer, more
 friendly set of functions for dealing with commands, lists, bundles,
