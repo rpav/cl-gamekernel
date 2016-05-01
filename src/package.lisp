@@ -42,7 +42,12 @@
    #:image-create-id #:font-create-id #:font-create-name
    #:quad-tex #:quad-tfm #:quad-attr
 
-   #:vx #:vy #:vz #:vw #:qv-vertex #:qv-uv
+   #:vx #:vy #:vz #:vw
+   #:nv2+ #:nv3+ #:nv4+ #:nv2* #:nv3* #:nv4*
+   #:set-vec2 #:set-vec3 #:set-vec4
+   #:set-vec2f #:set-vec3f #:set-vec4f
+
+   #:qv-vertex #:qv-uv
    #:tf-trs-prior #:tf-trs-translate
    #:tf-trs-axis #:tf-trs-angle
    #:tf-trs-scale
