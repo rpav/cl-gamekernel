@@ -36,7 +36,7 @@
 
    ;; Spritesheet
    #:spritesheet #:make-sheet #:make-sheet-destroy
-   #:find-frame
+   #:map-spritesheet #:find-frame
 
    ;; Accessors
    #:image-create-id #:font-create-id #:font-create-name

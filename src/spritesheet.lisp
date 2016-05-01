@@ -24,6 +24,12 @@
   (with-slots (frames) spritesheet
     (gethash name frames)))
 
+(defun map-spritesheet (function spritesheet)
+  (with-slots (frames) spritesheet
+    (loop for k being each hash-key in frames
+          for i from 0
+          do (funcall function k i))))
+
 (defgeneric cmd-quadsprite (sheet index &key key tfm))
 
 (defmethod cmd-quadsprite ((sheet gk-spritesheet) index &key key tfm)
