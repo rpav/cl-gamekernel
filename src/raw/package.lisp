@@ -8,7 +8,7 @@
    #:destroy-object #:destroy
 
    ;; Types
-   #:cmd-type
+   #:cmd-type #:cmd-key
    #:make-gk-bundle
    #:set-bundle-list
    #:make-gk-list #:init-gk-list

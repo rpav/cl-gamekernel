@@ -10,6 +10,14 @@
   (c-val ((cmd gk-cmd))
     (setf (cmd :type) v)))
 
+(defun cmd-key (cmd)
+  (c-val ((cmd gk-cmd))
+    (cmd :key)))
+
+(defun (setf cmd-key) (v cmd)
+  (c-val ((cmd gk-cmd))
+    (setf (cmd :key) v)))
+
 (defun free-gk-bundle (ptr)
   (c-let ((bundle gk-bundle :ptr ptr))
     (unless (cffi:null-pointer-p (bundle :lists))

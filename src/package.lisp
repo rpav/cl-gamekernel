@@ -5,6 +5,7 @@
   (:inherit-from
    :gk.raw
 
+   #:cmd-key
    #:destroy
 
    #:gk-vec2 #:gk-vec3 #:gk-vec4 #:gk-mat4 #:gk-quadvert)
