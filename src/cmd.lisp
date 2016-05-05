@@ -141,6 +141,22 @@
     (setf (cmd :align)
           (mask-apply 'gk-cmd-font-style v))))
 
+ ;; Text
+
+(define-simple-accessor gk-cmd-text text :break-width)
+(define-simple-accessor gk-cmd-text text (:pos :x))
+(define-simple-accessor gk-cmd-text text (:pos :y))
+
+(defun text-string (cmd)
+  (c-val ((cmd gk-cmd-text))
+    (cmd :str)))
+
+(defun (setf text-string) (v cmd)
+  (c-val ((cmd gk-cmd-text))
+    (unless (cffi:null-pointer-p (cmd :str * &))
+      (free (cmd :str * &)))
+    (setf (cmd :str) (string v))))
+
  ;; Transforms
 
 (define-simple-accessor gk-cmd-tf-trs tf-trs (:parent :prior))

@@ -46,6 +46,8 @@
    #:font-style-line-height #:font-style-align
    #:quad-tex #:quad-tfm #:quad-attr
 
+   #:text-break-width #:text-x #:text-y #:text-string
+
    #:vx #:vy #:vz #:vw
    #:nv2+ #:nv3+ #:nv4+ #:nv2* #:nv3* #:nv4*
    #:set-vec2 #:set-vec3 #:set-vec4

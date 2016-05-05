@@ -88,6 +88,8 @@
             (mask-apply 'gk-align-mask align)))
     cmd))
 
+ ;; GK-CMD-TEXT
+
 (defun free-gk-cmd-text (ptr)
   (c-let ((cmd gk-cmd-text :ptr ptr))
     (unless (cffi:null-pointer-p (cmd :str * &))
@@ -97,8 +99,6 @@
 (defmethod destroy-object ((cmd gk-cmd-text))
   (autocollect-cancel cmd)
   (free-gk-cmd-text (invalidate cmd)))
-
- ;; GK-CMD-TEXT
 
 (defun make-gk-cmd-text (string &key break-width x y end key)
   (c-let ((cmd gk-cmd-text :calloc t))
