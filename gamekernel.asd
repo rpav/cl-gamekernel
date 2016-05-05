@@ -47,6 +47,7 @@
    (:file "bundle")
    (:file "pass")
    (:file "cmd-list")
+   (:file "vec")
    (:file "cmd")
    (:file "spritesheet")))
 

@@ -39,74 +39,7 @@
 (defun image-create-id (cmd)
   (c-ref cmd gk-cmd-image-create :id))
 
- ;; Vectors etc
-
-(defun vx (vec) (c-ref vec gk-vec2 :x))
-(defun vy (vec) (c-ref vec gk-vec2 :y))
-(defun vz (vec) (c-ref vec gk-vec3 :z))
-(defun vw (vec) (c-ref vec gk-vec4 :w))
-
-(defun (setf vx) (v vec) (setf (c-ref vec gk-vec2 :x) v))
-(defun (setf vy) (v vec) (setf (c-ref vec gk-vec2 :y) v))
-(defun (setf vz) (v vec) (setf (c-ref vec gk-vec3 :z) v))
-(defun (setf vw) (v vec) (setf (c-ref vec gk-vec4 :w) v))
-
-(defun set-vec2 (dest src)
-  (memcpy dest src :type 'gk-vec2))
-
-(defun set-vec3 (dest src)
-  (memcpy dest src :type 'gk-vec3))
-
-(defun set-vec4 (dest src)
-  (memcpy dest src :type 'gk-vec4))
-
-(defun set-vec2f (v2 x y)
-  (setf (vx v2) x)
-  (setf (vy v2) y))
-
-(defun set-vec3f (v3 x y z)
-  (setf (vx v3) x)
-  (setf (vy v3) y)
-  (setf (vz v3) z))
-
-(defun set-vec4f (v4 x y z w)
-  (setf (vx v4) x)
-  (setf (vy v4) y)
-  (setf (vz v4) z)
-  (setf (vw v4) w))
-
-;;; These are probably not amazingly fast, but are there for simple
-;;; utility
-(declaim (inline nv2+ nv3+ nv4+ nv2* nv3* nv4*))
-(defun nv2+ (v0 v1)
-  (incf (vx v0) (vx v1))
-  (incf (vy v0) (vy v1)))
-
-(defun nv3+ (v0 v1)
-  (incf (vx v0) (vx v1))
-  (incf (vy v0) (vy v1))
-  (incf (vz v0) (vz v1)))
-
-(defun nv4+ (v0 v1)
-  (incf (vx v0) (vx v1))
-  (incf (vy v0) (vy v1))
-  (incf (vz v0) (vz v1))
-  (incf (vw v0) (vw v1)))
-
-(defun nv2* (v0 f)
-  (setf (vx v0) (* (vx v0) f))
-  (setf (vy v0) (* (vy v0) f)))
-
-(defun nv3* (v0 f)
-  (setf (vx v0) (* (vx v0) f))
-  (setf (vy v0) (* (vy v0) f))
-  (setf (vz v0) (* (vz v0) f)))
-
-(defun nv4* (v0 f)
-  (setf (vx v0) (* (vx v0) f))
-  (setf (vy v0) (* (vy v0) f))
-  (setf (vz v0) (* (vz v0) f))
-  (setf (vw v0) (* (vw v0) f)))
+ ;; Quadvert
 
 (defun qv-vertex (quadvert) (c-ref quadvert gk-quadvert :vertex))
 (defun qv-uv (quadvert) (c-ref quadvert gk-quadvert :uv))
