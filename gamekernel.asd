@@ -17,26 +17,21 @@
   ((:module #:autowrap-spec
     :pathname "spec"
     :components
-    ((:static-file "gk.h")))
+    ((:static-file "gk.h")
+     (:static-file "gk.arm-pc-linux-gnu.spec")
+     (:static-file "gk.i386-unknown-freebsd.spec")
+     (:static-file "gk.i686-apple-darwin9.spec")
+     (:static-file "gk.i686-pc-linux-gnu.spec")
+     (:static-file "gk.i686-pc-windows-msvc.spec")
+     (:static-file "gk.x86_64-apple-darwin9.spec")
+     (:static-file "gk.x86_64-pc-linux-gnu.spec")
+     (:static-file "gk.x86_64-pc-windows-msvc.spec")
+     (:static-file "gk.x86_64-unknown-freebsd.spec")))
 
    (:module #:raw
     :pathname "raw"
     :components
-    ((:module #:autospec
-      :pathname "spec"
-      :components
-      ((:static-file "gk.h")
-       (:static-file "gk.arm-pc-linux-gnu.spec")
-       (:static-file "gk.i386-unknown-freebsd.spec")
-       (:static-file "gk.i686-apple-darwin9.spec")
-       (:static-file "gk.i686-pc-linux-gnu.spec")
-       (:static-file "gk.i686-pc-windows-msvc.spec")
-       (:static-file "gk.x86_64-apple-darwin9.spec")
-       (:static-file "gk.x86_64-pc-linux-gnu.spec")
-       (:static-file "gk.x86_64-pc-windows-msvc.spec")
-       (:static-file "gk.x86_64-unknown-freebsd.spec")))
-
-     (:file "library")
+    ((:file "library")
      (:file "autowrap")
      (:file "package")
      (:file "c-api")

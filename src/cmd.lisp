@@ -22,6 +22,7 @@
 (rebind
  (pass . make-gk-pass)
  (cmd-font-create . make-gk-cmd-font-create)
+ (cmd-font-face . make-gk-cmd-font-face)
  (cmd-font-style . make-gk-cmd-font-style)
  (cmd-text . make-gk-cmd-text)
  (cmd-image-create . make-gk-cmd-image-create)
@@ -125,6 +126,20 @@
 
 (defun font-create-id (cmd)
   (c-ref cmd gk-cmd-font-create :id))
+
+(define-simple-accessor gk-cmd-font-style font-style :size)
+(define-simple-accessor gk-cmd-font-style font-style :blur)
+(define-simple-accessor gk-cmd-font-style font-style :spacing)
+(define-simple-accessor gk-cmd-font-style font-style :line-height)
+
+(defun font-style-align (cmd)
+  (c-val ((cmd gk-cmd-font-style))
+    (mask-keywords 'gk-align-mask (cmd :align))))
+
+(defun (setf font-style-align) (v cmd)
+  (c-val ((cmd gk-cmd-font-style))
+    (setf (cmd :align)
+          (mask-apply 'gk-cmd-font-style v))))
 
  ;; Transforms
 

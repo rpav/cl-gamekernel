@@ -23,6 +23,7 @@
    #:make-gk-list-nvg
 
    #:make-gk-cmd-font-create
+   #:make-gk-cmd-font-face
    #:make-gk-cmd-font-style
    #:gk-cmd-font-create-id
    #:make-gk-cmd-text

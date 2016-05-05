@@ -1,5 +1,7 @@
 (in-package :gk.raw)
 
+ ;; GK-LIST-NVG
+
 (defmethod destroy-object ((l gk-list-nvg))
   (autocollect-cancel l)
   (free-gk-list (invalidate l)))
@@ -11,6 +13,8 @@
     (setf (l :height) height)
     (setf (l :ratio) ratio)
     l))
+
+ ;; GK-CMD-FONT-CREATE
 
 (defun free-gk-cmd-font-create (ptr)
   (c-let ((cmd gk-cmd-font-create :ptr ptr))
@@ -35,6 +39,33 @@
 (defun gk-cmd-font-create-id (font-create-cmd)
   (c-let ((cmd gk-cmd-font-create :from font-create-cmd))
     (cmd :id)))
+
+ ;; GK-CMD-FONT-FACE
+
+(defun free-gk-cmd-font-face (ptr)
+  (c-let ((cmd gk-cmd-font-face :ptr ptr))
+    (when (= (cmd :type) +gk-font-face-name+)
+      (free (cmd :face :name * &)))))
+
+(defmethod destroy-object ((cmd gk-cmd-font-face))
+  (autocollect-cancel cmd)
+  (free-gk-cmd-font-face (ptr cmd)))
+
+(defun make-gk-cmd-font-face (id-or-name &key key)
+  (c-let ((cmd gk-cmd-font-face))
+    (init-gk-cmd cmd :font-face key)
+    (autocollect (ptr) cmd
+      (free-gk-cmd-font-face ptr))
+    (etypecase id-or-name
+      (number
+       (setf (cmd :type) +gk-font-face-id+
+             (cmd :face :id) id-or-name))
+      (string
+       (setf (cmd :type) +gk-font-face-name+
+             (cmd :face :name) id-or-name)))
+    cmd))
+
+ ;; GK-CMD-FONT-STYLE
 
 (defmethod destroy-object ((cmd gk-cmd-font-style))
   (autocollect-cancel cmd)
@@ -67,12 +98,15 @@
   (autocollect-cancel cmd)
   (free-gk-cmd-text (invalidate cmd)))
 
-(defun make-gk-cmd-text (string &key x y end key)
+ ;; GK-CMD-TEXT
+
+(defun make-gk-cmd-text (string &key break-width x y end key)
   (c-let ((cmd gk-cmd-text :calloc t))
     (autocollect (ptr) cmd
       (free-gk-cmd-text ptr))
     (when key (setf (cmd :parent :key) key))
     (setf (cmd :parent :type) :text
+          (cmd :break-width) (float (or break-width 0))
           (cmd :pos :x) (float (or x 0s0))
           (cmd :pos :y) (float (or y 0s0)))
     (when string
@@ -81,6 +115,8 @@
       (setf (cmd :end)
             (cffi-sys:inc-pointer (cmd :str * &) end)))
     cmd))
+
+ ;; GK-CMD-IMAGE-CREATE
 
 (autowrap:define-bitmask-from-enum (gk-image-flags gk-image-flags))
 

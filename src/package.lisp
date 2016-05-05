@@ -29,7 +29,8 @@
    #:cmd-list-nvg
 
    ;; Commands
-   #:cmd-path #:cmd-font-create #:cmd-font-style #:cmd-text
+   #:cmd-font-create #:cmd-font-face #:cmd-font-style
+   #:cmd-path #:cmd-text
    #:cmd-image-create #:cmd-quad #:cmd-quadsprite
    #:cmd-tf-trs #:cmd-tf-ortho
 
@@ -41,6 +42,8 @@
 
    ;; Accessors
    #:image-create-id #:font-create-id #:font-create-name
+   #:font-style-size #:font-style-blur #:font-style-spacing
+   #:font-style-line-height #:font-style-align
    #:quad-tex #:quad-tfm #:quad-attr
 
    #:vx #:vy #:vz #:vw
