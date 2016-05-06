@@ -49,7 +49,7 @@
 
    #:text-break-width #:text-x #:text-y #:text-string
 
-   #:vx #:vy #:vz #:vw
+   #:vx #:vy #:vz #:vw #:v2= #:v3= #:v4=
    #:nv2+ #:nv3+ #:nv4+ #:nv2- #:nv3- #:nv4- #:nv2* #:nv3* #:nv4*
    #:set-vec2 #:set-vec3 #:set-vec4
    #:set-vec2f #:set-vec3f #:set-vec4f

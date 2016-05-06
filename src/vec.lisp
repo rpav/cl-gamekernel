@@ -12,6 +12,18 @@
 (defun (setf vz) (v vec) (setf (c-ref vec gk-vec3 :z) v))
 (defun (setf vw) (v vec) (setf (c-ref vec gk-vec4 :w) v))
 
+;;; These should really take an epsilon
+(declaim (inline v2= v3= v4=))
+(defun v2= (v0 v1) (and (= (vx v0) (vx v1))
+                        (= (vy v0) (vy v1))))
+(defun v3= (v0 v1) (and (= (vx v0) (vx v1))
+                        (= (vy v0) (vy v1))
+                        (= (vz v0) (vz v1))))
+(defun v4= (v0 v1) (and (= (vx v0) (vx v1))
+                        (= (vy v0) (vy v1))
+                        (= (vz v0) (vz v1))
+                        (= (vw v0) (vw v1))))
+
 (defun set-vec2 (dest src)
   (memcpy dest src :type 'gk-vec2)
   dest)
