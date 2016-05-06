@@ -89,7 +89,7 @@
   (free-gk-pass (invalidate pass)))
 
 (defun make-gk-pass (list-index &optional (sort :none))
-  (c-let ((pass gk-pass))
+  (c-let ((pass gk-pass :calloc t))
     (autocollect (ptr) pass
       (free-gk-pass ptr))
     (setf (cmd-type pass) :pass)

@@ -52,7 +52,7 @@
   (free-gk-cmd-font-face (ptr cmd)))
 
 (defun make-gk-cmd-font-face (id-or-name &key key)
-  (c-let ((cmd gk-cmd-font-face))
+  (c-let ((cmd gk-cmd-font-face :calloc t))
     (init-gk-cmd cmd :font-face key)
     (autocollect (ptr) cmd
       (free-gk-cmd-font-face ptr))

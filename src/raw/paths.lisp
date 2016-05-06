@@ -1,7 +1,7 @@
 (in-package :gk.raw)
 
 (defun make-path (definition)
-  (c-let ((vec :float :count (length definition)))
+  (c-let ((vec :float :count (length definition) :calloc t))
     (handler-case
         (progn
           (loop for v in definition
@@ -28,7 +28,7 @@
   (free-gk-cmd-path (invalidate cmd)))
 
 (defun make-gk-cmd-path (ptr len &key key)
-  (c-let ((cmd gk-cmd-path))
+  (c-let ((cmd gk-cmd-path :calloc t))
     (init-gk-cmd cmd :path key)
     (setf (cmd :pathdef) ptr)
     (setf (cmd :pathlen) len)

@@ -32,9 +32,23 @@
  (cmd-spritesheet-create . make-gk-cmd-spritesheet-create)
  (cmd-spritesheet-destroy . make-gk-cmd-spritesheet-destroy))
 
+ ;; Paths
+
 (defun cmd-path (list &key key)
   (let ((vec (make-path list)))
     (make-gk-cmd-path vec (length list) :key key)))
+
+(defun cmd-path-elt (cmd elt)
+  (c-val ((cmd gk-cmd-path))
+    (when (< elt (cmd :pathlen))
+      (cmd :pathdef * elt))))
+
+(defun (setf cmd-path-elt) (v cmd elt)
+  (c-val ((cmd gk-cmd-path))
+    (when (< elt (cmd :pathlen))
+      (setf (cmd :pathdef * elt) v))))
+
+ ;; Images
 
 (defun image-create-id (cmd)
   (c-ref cmd gk-cmd-image-create :id))

@@ -41,6 +41,7 @@
    #:map-spritesheet #:find-frame
 
    ;; Accessors
+   #:cmd-path-elt
    #:image-create-id #:font-create-id #:font-create-name
    #:font-style-size #:font-style-blur #:font-style-spacing
    #:font-style-line-height #:font-style-align

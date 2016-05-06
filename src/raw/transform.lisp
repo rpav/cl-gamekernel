@@ -69,7 +69,7 @@
               (m :v :a03) (m :v :a13) (m :v :a23) (m :v :a33)))))
 
 (defun gk-quadvert (x y z w u v)
-  (c-let ((qv gk-quadvert))
+  (c-let ((qv gk-quadvert :calloc t))
     (autocollect (ptr) qv (free ptr))
     (setf (qv :vertex :x) (float x)
           (qv :vertex :y) (float y)
@@ -89,7 +89,7 @@
 (simply-destroy gk-cmd-tf-trs)
 
 (defun make-gk-cmd-tf-trs (&key key prior out translate axis angle scale)
-  (c-let ((cmd gk-cmd-tf-trs))
+  (c-let ((cmd gk-cmd-tf-trs :calloc t))
     (autocollect (ptr) cmd (free ptr))
     (setf (cmd :parent :parent :type) :tf-trs)
     (when key (setf (cmd :parent :parent :key) key))
@@ -113,7 +113,7 @@
 
 (defun make-gk-cmd-tf-ortho (out left right bottom top near far
                              &key key)
-  (c-let ((cmd gk-cmd-tf-ortho))
+  (c-let ((cmd gk-cmd-tf-ortho :calloc t))
     (autocollect (ptr) cmd (free ptr))
     (when key (setf (cmd :parent :parent :key) key))
     (setf (cmd :parent :parent :type) :tf-ortho
