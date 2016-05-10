@@ -2,6 +2,6 @@
 
 ;;; You MUST call this function if you're building a binary that
 ;;; uses cl-gamekernel.
-(defun load-gk ()
+(defun gk-init ()
   (setf +identity-mat4+ (gk-mat4))
   (load-gk-library))
