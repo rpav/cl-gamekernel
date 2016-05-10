@@ -40,7 +40,10 @@
      (:file "gl")
      (:file "paths")
      (:file "nvg")
-     (:file "spritesheet")))
+     (:file "spritesheet")
+
+     ;; This should be last
+     (:file "load")))
 
    (:file "package")
    (:file "gk")

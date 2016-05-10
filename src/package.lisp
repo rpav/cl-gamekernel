@@ -5,6 +5,7 @@
   (:inherit-from
    :gk.raw
 
+   #:gk-init
    #:cmd-key
    #:destroy
 
