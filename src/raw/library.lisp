@@ -7,5 +7,9 @@
   (:windows "gk.dll")
   (t (:default "libgk")))
 
-;(cffi:close-foreign-library 'libgk)
-(cffi:use-foreign-library libgk)
+;;;(cffi:close-foreign-library 'libgk)
+
+(defun load-gk-library ()
+  (cffi:use-foreign-library libgk))
+
+(load-gk-library)

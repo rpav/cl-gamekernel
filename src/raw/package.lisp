@@ -4,6 +4,9 @@
   (:use #:cl #:alexandria #:autowrap.minimal #:plus-c #:gk.ffi)
   (:export-only
 
+   ;; Library
+   #:load-gk-library
+
    ;; Core API
    #:destroy-object #:destroy
 
