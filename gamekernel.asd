@@ -9,7 +9,7 @@
   :license "MIT"
   :version "0.0"
 
-  :depends-on (:alexandria :defpackage-plus :cl-autowrap :cl-plus-c)
+  :depends-on (:alexandria :defpackage-plus :trivial-garbage :cl-autowrap :cl-plus-c)
   :pathname "src"
   :serial t
 
