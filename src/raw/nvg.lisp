@@ -118,7 +118,7 @@
 
  ;; GK-CMD-IMAGE-CREATE
 
-(autowrap:define-bitmask-from-enum (gk-image-flags gk-image-flags))
+(autowrap:define-bitmask-from-enum (gk-tex-flags gk-tex-flags))
 
 (defun free-gk-cmd-image-create (ptr)
   (c-let ((cmd gk-cmd-image-create :ptr ptr))
@@ -136,7 +136,7 @@
     (when key (setf (cmd :parent :key) key))
     (setf (cmd :parent :type) :image-create
           (cmd :filename) (namestring filename)
-          (cmd :flags) (autowrap:mask-apply 'gk-image-flags flags)
+          (cmd :flags) (autowrap:mask-apply 'gk-tex-flags flags)
           (cmd :min-filter) min
           (cmd :mag-filter) mag)
     cmd))
