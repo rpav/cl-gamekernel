@@ -20,6 +20,9 @@
 (defpackage+-1:defpackage+ :gk.test.example3
   (:use #:cl #:alexandria #:gk #:gk.test))
 
+(defpackage+-1:defpackage+ :gk.test.example4
+  (:use #:cl #:alexandria #:gk #:gk.test))
+
 (in-package :gk.test)
 
  ;; Variables

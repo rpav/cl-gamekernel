@@ -46,6 +46,27 @@
 
    ;; Spritesheet
    #:make-gk-cmd-spritesheet-create
-   #:make-gk-cmd-spritesheet-destroy)
+   #:make-gk-cmd-spritesheet-destroy
+
+   ;; Box2D
+   #:gk-b2-world #:gk-b2-body
+   #:make-gk-b2-world #:free-gk-b2-body #:make-gk-b2-body
+   #:make-gk-b2-bodydef
+
+   #:make-gk-cmd-b2-world-create
+   #:make-gk-cmd-b2-world-destroy
+   #:make-gk-cmd-b2-body-create
+   #:make-gk-cmd-b2-body-destroy
+   #:make-gk-cmd-b2-fixture-create
+   #:free-gk-cmd-b2-fixture-create
+   #:make-gk-cmd-b2-fixture-update
+   #:make-gk-cmd-b2-iter-bodies
+   #:make-gk-cmd-b2-force
+   #:make-gk-cmd-b2-torque
+   #:make-gk-cmd-b2-linear-impulse
+   #:make-gk-cmd-b2-angular-impulse
+   #:make-gk-cmd-b2-draw-debug
+   #:make-gk-cmd-b2-step
+   )
   (:inherit :gk.ffi))
 

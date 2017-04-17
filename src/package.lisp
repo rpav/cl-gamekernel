@@ -37,6 +37,15 @@
 
    #:cmd-spritesheet-create #:cmd-spritesheet-destroy
 
+   #:cmd-b2-world-create #:cmd-b2-world-destroy
+   #:cmd-b2-body-create #:cmd-b2-body-destroy
+   #:cmd-b2-fixture-create #:cmd-b2-fixture-update
+   #:cmd-b2-step #:cmd-b2-iter-bodies
+   #:cmd-b2-force #:cmd-b2-torque
+   #:cmd-b2-linear-impulse #:cmd-b2-angular-impulse
+   #:cmd-b2-draw-debug #:make-b2-body #:make-b2-world #:b2-bodydef
+   #:cmd-list-b2
+
    ;; Spritesheet
    #:spritesheet #:make-sheet #:make-sheet-destroy
    #:map-spritesheet #:find-frame

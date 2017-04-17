@@ -41,6 +41,7 @@
      (:file "paths")
      (:file "nvg")
      (:file "spritesheet")
+     (:file "box2d")
 
      ;; This should be last
      (:file "load")))
@@ -52,7 +53,8 @@
    (:file "cmd-list")
    (:file "vec")
    (:file "cmd")
-   (:file "spritesheet")))
+   (:file "spritesheet")
+   (:file "box2d")))
 
 (defsystem :gamekernel/examples
   :description "GameKernel examples"
@@ -77,4 +79,5 @@
    (:file "example1")
    (:file "example1.1")
    (:file "example2")
-   (:file "example3")))
+   (:file "example3")
+   (:file "example4")))

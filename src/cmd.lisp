@@ -30,7 +30,20 @@
  (cmd-tf-ortho . make-gk-cmd-tf-ortho)
  (cmd-quad . make-gk-cmd-quad)
  (cmd-spritesheet-create . make-gk-cmd-spritesheet-create)
- (cmd-spritesheet-destroy . make-gk-cmd-spritesheet-destroy))
+ (cmd-spritesheet-destroy . make-gk-cmd-spritesheet-destroy)
+ (cmd-b2-world-create . make-gk-cmd-b2-world-create)
+ (cmd-b2-world-destroy . make-gk-cmd-b2-world-destroy)
+ (cmd-b2-fixture-update . make-gk-cmd-b2-fixture-update)
+ (cmd-b2-step . make-gk-cmd-b2-step)
+ (cmd-b2-iter-bodies . make-gk-cmd-b2-iter-bodies)
+ (cmd-b2-force . make-gk-cmd-b2-force)
+ (cmd-b2-torque . make-gk-cmd-b2-torque)
+ (cmd-b2-linear-impulse . make-gk-cmd-b2-linear-impulse)
+ (cmd-b2-angular-impulse . make-gk-cmd-b2-angular-impulse)
+ (cmd-b2-draw-debug . make-gk-cmd-b2-draw-debug)
+ (make-b2-world . make-gk-b2-world)
+ (make-b2-body . make-gk-b2-body)
+ (b2-bodydef . make-gk-b2-bodydef))
 
  ;; Paths
 
