@@ -51,6 +51,10 @@
    #:b2-linear-impulse #:b2-linear-impulse-point
    #:b2-angular-impulse
 
+   #:map-b2-collisions
+   #:add-b2-body-object #:find-b2-body-object #:remove-b2-body-object
+   #:clear-b2-body-objects
+
    ;; Spritesheet
    #:spritesheet #:make-sheet #:make-sheet-destroy
    #:map-spritesheet #:find-frame

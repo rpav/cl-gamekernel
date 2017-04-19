@@ -42,7 +42,6 @@
  (cmd-b2-angular-impulse . make-gk-cmd-b2-angular-impulse)
  (cmd-b2-draw-debug . make-gk-cmd-b2-draw-debug)
  (make-b2-world . make-gk-b2-world)
- (make-b2-body . make-gk-b2-body)
  (b2-bodydef . make-gk-b2-bodydef))
 
  ;; Paths

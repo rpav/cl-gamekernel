@@ -1,5 +1,7 @@
 (in-package :gk)
 
+(defvar *b2-body-objects* (make-hash-table))
+
 (defun cmd-b2-body-create (world &rest body-defs)
   (c-val ((cmd gk-cmd-b2-body-create
                (make-gk-cmd-b2-body-create world :prealloc (length body-defs))))
@@ -17,6 +19,40 @@
 
 (defmethod initialize-instance ((l cmd-list-b2) &key (prealloc 1) &allow-other-keys)
   (call-next-method l :subsystem :box2d :prealloc prealloc))
+
+ ;; Body <-> Object associations
+
+(defun make-b2-body (&optional object)
+  "Make and optionally associate BODY with OBJECT"
+  (let ((body (make-gk-b2-body)))
+    (when object
+      (add-b2-body-object body object))
+    body))
+
+(defun bodyhash (body)
+  (cffi:pointer-address (ptr body)))
+
+(defun add-b2-body-object (body object)
+  (setf (gethash (bodyhash body) *b2-body-objects*) object))
+
+(defun find-b2-body-object (body)
+  (gethash (bodyhash body) *b2-body-objects*))
+
+(defun remove-b2-body-object (body)
+  (remhash (bodyhash body) *b2-body-objects*))
+
+(defun clear-b2-body-objects ()
+  (clrhash *b2-body-objects*))
+
+ ;; Step
+
+(defun map-b2-collisions (function step-cmd)
+  (c-val ((step-cmd gk-cmd-b2-step))
+    (loop for i from 0 below (step-cmd :ncollisions)
+          do (c-let ((c gk-b2-contact-pair :ptr (step-cmd :collisions * i)))
+               (let ((a (find-b2-body-object (c :a)))
+                     (b (find-b2-body-object (c :b))))
+                 (funcall function c a b))))))
 
  ;; Force
 
