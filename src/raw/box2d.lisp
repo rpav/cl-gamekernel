@@ -166,14 +166,16 @@
           (cmd :wake) wakep)
     cmd))
 
-(defun make-gk-cmd-b2-draw-debug (world width height &key (key 0))
+(defun make-gk-cmd-b2-draw-debug (world width height &key (xscale 0.0) (yscale 0.0) (key 0))
   (c-let ((cmd gk-cmd-b2-draw-debug :calloc t))
     (autocollect (ptr) cmd (free ptr))
     (setf (cmd :parent :type) :b2-draw-debug
           (cmd :parent :key) key
           (cmd :world) world
           (cmd :width) width
-          (cmd :height) height)
+          (cmd :height) height
+          (cmd :xscale) xscale
+          (cmd :yscale) yscale)
     cmd))
 
 (defun make-gk-cmd-b2-step (world &key (key 0))
