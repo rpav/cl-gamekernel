@@ -133,7 +133,7 @@
     (autocollect (ptr) cmd (free ptr))
     (setf (cmd :parent :type) :b2-force
           (cmd :body) body
-          (cmd :wake) wakep)
+          (cmd :wake) (if wakep 1 0))
     (memcpy (cmd :force) force)
     (memcpy (cmd :point) point)
     cmd))
@@ -144,7 +144,7 @@
     (setf (cmd :parent :type) :b2-torque
           (cmd :body) body
           (cmd :torque) torque
-          (cmd :wake) wakep)
+          (cmd :wake) (if wakep 1 0))
     cmd))
 
 (defun make-gk-cmd-b2-linear-impulse (body impulse point &key (wakep t))
@@ -152,7 +152,7 @@
     (autocollect (ptr) cmd (free ptr))
     (setf (cmd :parent :type) :b2-linear-impulse
           (cmd :body) body
-          (cmd :wake) wakep)
+          (cmd :wake) (if wakep 1 0))
     (memcpy (cmd :impulse) impulse)
     (memcpy (cmd :point) point)
     cmd))
@@ -163,7 +163,7 @@
     (setf (cmd :parent :type) :b2-angular-impulse
           (cmd :body) body
           (cmd :impulse) impulse
-          (cmd :wake) wakep)
+          (cmd :wake) (if wakep 1 0))
     cmd))
 
 (defun make-gk-cmd-b2-draw-debug (world width height &key (xscale 0.0) (yscale 0.0) (key 0))

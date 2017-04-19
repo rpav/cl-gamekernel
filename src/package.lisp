@@ -46,6 +46,11 @@
    #:cmd-b2-draw-debug #:make-b2-body #:make-b2-world #:b2-bodydef
    #:cmd-list-b2
 
+   #:b2-force #:b2-force-point
+   #:b2-torque
+   #:b2-linear-impulse #:b2-linear-impulse-point
+   #:b2-angular-impulse
+
    ;; Spritesheet
    #:spritesheet #:make-sheet #:make-sheet-destroy
    #:map-spritesheet #:find-frame
