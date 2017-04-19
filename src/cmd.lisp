@@ -66,6 +66,14 @@
 (defun image-create-id (cmd)
   (c-ref cmd gk-cmd-image-create :id))
 
+(defun cmd-image-destroy (ids &key (key 0))
+  (c-val ((cmd gk-cmd-image-destroy
+               (make-gk-cmd-image-destroy :prealloc (length ids) :key key)))
+    (loop for id in ids
+          for i from 0
+          do (setf (cmd :ids i) id))
+    cmd))
+
  ;; Quadvert
 
 (defun qv-vertex (quadvert) (c-ref quadvert gk-quadvert :vertex))

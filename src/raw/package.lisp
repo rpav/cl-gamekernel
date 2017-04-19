@@ -32,6 +32,7 @@
    #:make-gk-cmd-text
 
    #:make-gk-cmd-image-create
+   #:make-gk-cmd-image-destroy
 
    ;; Transforms
    #:gk-vec2 #:gk-vec3 #:gk-vec4 #:gk-mat4

@@ -15,7 +15,7 @@
     (setf step (cmd-b2-step world))
     (setf debug-draw (cmd-b2-draw-debug world 1280 720))
 
-    (setf go nil)
+    (setf go t)
 
     (bundle-append bundle list)
 
@@ -65,7 +65,9 @@
     (when go
       (gk:process gk bundle))))
 
+#++
 (defmethod kit.sdl2:keyboard-event ((w gk-window) state ts rp ks)
+  #++
   (let ((scancode (sdl2:scancode ks)))
     (with-slots (go) w
       (when (eq :scancode-space scancode)

@@ -140,3 +140,25 @@
           (cmd :min-filter) min
           (cmd :mag-filter) mag)
     cmd))
+
+ ;; GK-CMD-IMAGE-DESTROY
+
+(defun free-gk-cmd-image-destroy (ptr)
+  (c-let ((cmd gk-cmd-image-destroy :ptr ptr))
+    (when (> (cmd :nids) 0)
+      (free (cmd :ids)))
+    (free cmd)))
+
+(defmethod destroy-object ((cmd gk-cmd-image-destroy))
+  (autocollect-cancel cmd)
+  (free-gk-cmd-image-destroy (invalidate cmd)))
+
+(defun make-gk-cmd-image-destroy (&key (prealloc 1) (key 0))
+  (c-let ((cmd gk-cmd-image-destroy :calloc t))
+    (autocollect (ptr) cmd
+      (free-gk-cmd-image-destroy ptr))
+    (setf (cmd :parent :type) :gk-cmd-image-destroy
+          (cmd :parent :key) key
+          (cmd :nids) prealloc
+          (cmd :ids) (alloc :int prealloc))
+    cmd))

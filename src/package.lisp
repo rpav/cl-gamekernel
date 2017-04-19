@@ -32,7 +32,7 @@
    ;; Commands
    #:cmd-font-create #:cmd-font-face #:cmd-font-style
    #:cmd-path #:cmd-text
-   #:cmd-image-create #:cmd-quad #:cmd-quadsprite
+   #:cmd-image-create #:cmd-image-destroy #:cmd-quad #:cmd-quadsprite
    #:cmd-tf-trs #:cmd-tf-ortho
 
    #:cmd-spritesheet-create #:cmd-spritesheet-destroy
