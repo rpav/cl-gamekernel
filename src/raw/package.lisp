@@ -66,6 +66,7 @@
    #:make-gk-cmd-b2-torque
    #:make-gk-cmd-b2-linear-impulse
    #:make-gk-cmd-b2-angular-impulse
+   #:make-gk-cmd-b2-set-velocity
    #:make-gk-cmd-b2-draw-debug
    #:make-gk-cmd-b2-step
    )

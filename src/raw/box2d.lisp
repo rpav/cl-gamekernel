@@ -102,9 +102,9 @@
 
 (defun make-gk-cmd-b2-fixture-update (body id
                                       &key (key 0)
-                                      (density 0 densityp)
-                                      (elasticity 0 elasticityp)
-                                      (friction 0 frictionp))
+                                      (density 0.0 densityp)
+                                      (elasticity 0.0 elasticityp)
+                                      (friction 0.0 frictionp))
   (c-let ((cmd gk-cmd-b2-fixture-update :calloc t))
     (autocollect (ptr) cmd (free ptr))
     (setf (cmd :parent :type) :b2-fixture-update
@@ -164,6 +164,16 @@
           (cmd :body) body
           (cmd :impulse) impulse
           (cmd :wake) (if wakep 1 0))
+    cmd))
+
+(defun make-gk-cmd-b2-set-velocity (body linear angular &key (key 0))
+  (c-let ((cmd gk-cmd-b2-set-velocity :calloc t))
+    (autocollect (ptr) cmd (free ptr))
+    (setf (cmd :parent :type) :b2-set-velocity
+          (cmd :parent :key) key
+          (cmd :body) body
+          (cmd :angular) (float angular))
+    (memcpy (cmd :linear) linear)
     cmd))
 
 (defun make-gk-cmd-b2-draw-debug (world width height &key (xscale 0.0) (yscale 0.0) (key 0))

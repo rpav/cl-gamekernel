@@ -43,13 +43,22 @@
    #:cmd-b2-step #:cmd-b2-iter-bodies
    #:cmd-b2-force #:cmd-b2-torque
    #:cmd-b2-linear-impulse #:cmd-b2-angular-impulse
+   #:cmd-b2-set-velocity
    #:cmd-b2-draw-debug #:make-b2-body #:make-b2-world #:b2-bodydef
    #:cmd-list-b2
+
+   #:b2-fixture-update-density #:b2-fixture-update-elasticity
+   #:b2-fixture-update-friction #:b2-fixture-update-mask
+
+   #:b2-body-position #:b2-body-angle #:b2-body-is-awake
+   #:b2-body-velocity #:b2-body-angular-velocity
+   #:b2-body-user-data
 
    #:b2-force #:b2-force-point
    #:b2-torque
    #:b2-linear-impulse #:b2-linear-impulse-point
    #:b2-angular-impulse
+   #:b2-velocity-linear #:b2-velocity-angular
 
    #:map-b2-collisions
    #:add-b2-body-object #:find-b2-body-object #:remove-b2-body-object

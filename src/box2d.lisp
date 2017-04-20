@@ -20,6 +20,44 @@
 (defmethod initialize-instance ((l cmd-list-b2) &key (prealloc 1) &allow-other-keys)
   (call-next-method l :subsystem :box2d :prealloc prealloc))
 
+ ;; Body accessors
+
+(defun b2-body-position (body)
+  (c-val ((body gk-b2-body))
+    (unless (cffi:null-pointer-p (body :position))
+      (body :position *))))
+
+(defun (setf b2-body-position) (ptr body)
+  "Set what this POINTS to, since setting the value means nothing"
+  (c-val ((body gk-b2-body))
+    (setf (body :position) ptr)))
+
+(defun b2-body-angle (body)
+  (c-val ((body gk-b2-body))
+    (unless (cffi:null-pointer-p (body :angle))
+      (body :angle *))))
+
+(defun (setf b2-body-angle) (ptr body)
+  "Set what this POINTS to, since setting the value means nothing"
+  (c-val ((body gk-b2-body))
+    (setf (body :angle) ptr)))
+
+(defun b2-body-velocity (body)
+  (c-val ((body gk-b2-body))
+    (body :velocity)))
+
+(defun b2-body-angular-velocity (body)
+  (c-val ((body gk-b2-body))
+    (body :angular-velocity)))
+
+(defun b2-body-is-awake (body)
+  (c-val ((body gk-b2-body))
+    (body :is-awake)))
+
+(defun b2-body-user-data (body)
+  (c-val ((body gk-b2-body))
+    (body :user-data)))
+
  ;; Body <-> Object associations
 
 (defun make-b2-body (&optional object)
@@ -43,6 +81,41 @@
 
 (defun clear-b2-body-objects ()
   (clrhash *b2-body-objects*))
+
+ ;; fixture update
+
+(defun b2-fixture-update-density (f)
+  (c-val ((f gk-cmd-b2-fixture-update))
+    (f :density)))
+
+(defun (setf b2-fixture-update-density) (v f)
+  (c-val ((f gk-cmd-b2-fixture-update))
+    (setf (f :density) v)))
+
+(defun b2-fixture-update-elasticity (f)
+  (c-val ((f gk-cmd-b2-fixture-update))
+    (f :elasticity)))
+
+(defun (setf b2-fixture-update-elasticity) (v f)
+  (c-val ((f gk-cmd-b2-fixture-update))
+    (setf (f :elasticity) v)))
+
+(defun b2-fixture-update-friction (f)
+  (c-val ((f gk-cmd-b2-fixture-update))
+    (f :friction)))
+
+(defun (setf b2-fixture-update-friction) (v f)
+  (c-val ((f gk-cmd-b2-fixture-update))
+    (setf (f :friction) v)))
+
+(defun b2-fixture-update-mask (f)
+  (c-val ((f gk-cmd-b2-fixture-update))
+    (f :update)))
+
+(defun (setf b2-fixture-update-mask) (v f)
+  (c-val ((f gk-cmd-b2-fixture-update))
+    (setf (f :update) (autowrap:mask-apply 'gk.raw::gk-b2-fixture-update-mask v))))
+
 
  ;; Step
 
@@ -109,3 +182,21 @@
 (defun (setf b2-angular-impulse) (v f)
   (c-val ((f gk-cmd-b2-angular-impulse))
     (setf (f :impulse) v)))
+
+ ;; Set Velocity
+
+(defun b2-velocity-linear (f)
+  (c-val ((f gk-cmd-b2-set-velocity))
+    (f :linear)))
+
+(defun (setf b2-velocity-linear) (v f)
+  (c-val ((f gk-cmd-b2-set-velocity))
+    (memcpy (f :linear) v)))
+
+(defun b2-velocity-angular (f)
+  (c-val ((f gk-cmd-b2-set-velocity))
+    (f :angular)))
+
+(defun (setf b2-velocity-angular) (v f)
+  (c-val ((f gk-cmd-b2-set-velocity))
+    (setf (f :angular) v)))

@@ -40,6 +40,7 @@
  (cmd-b2-torque . make-gk-cmd-b2-torque)
  (cmd-b2-linear-impulse . make-gk-cmd-b2-linear-impulse)
  (cmd-b2-angular-impulse . make-gk-cmd-b2-angular-impulse)
+ (cmd-b2-set-velocity . make-gk-cmd-b2-set-velocity)
  (cmd-b2-draw-debug . make-gk-cmd-b2-draw-debug)
  (make-b2-world . make-gk-b2-world)
  (b2-bodydef . make-gk-b2-bodydef))
