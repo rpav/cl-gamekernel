@@ -160,9 +160,9 @@
 (defun (setf tf-trs-scale) (v tf-trs)
   (c-let ((cmd gk-cmd-tf-trs :from tf-trs))
     (if (null v)
-        (setf (cmd :flags) (logandc1 (mask 'gk-trs-mask :rotate) (cmd :flags)))
+        (setf (cmd :flags) (logandc1 (mask 'gk-trs-mask :scale) (cmd :flags)))
         (progn
-          (setf (cmd :flags) (logior (mask 'gk-trs-mask :rotate) (cmd :flags)))
+          (setf (cmd :flags) (logior (mask 'gk-trs-mask :scale) (cmd :flags)))
           (memcpy (cmd :scale &) v))))
   v)
 
