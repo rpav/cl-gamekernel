@@ -34,6 +34,7 @@
  (cmd-b2-world-create . make-gk-cmd-b2-world-create)
  (cmd-b2-world-destroy . make-gk-cmd-b2-world-destroy)
  (cmd-b2-body-update . make-gk-cmd-b2-body-update)
+ (cmd-b2-body-destroy . make-gk-cmd-b2-body-destroy)
  (cmd-b2-fixture-update . make-gk-cmd-b2-fixture-update)
  (cmd-b2-step . make-gk-cmd-b2-step)
  (cmd-b2-iter-bodies . make-gk-cmd-b2-iter-bodies)

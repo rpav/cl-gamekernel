@@ -91,6 +91,14 @@
     (memcpy (cmd :translate) translate)
     cmd))
 
+(defun make-gk-cmd-b2-body-destroy (world body)
+  (c-let ((cmd gk-cmd-b2-body-destroy))
+    (autocollect (ptr) cmd (free ptr))
+    (setf (cmd-type cmd) :b2-body-destroy
+          (cmd :world) world
+          (cmd :body) body)
+    cmd))
+
 (defun free-gk-cmd-b2-fixture-create (ptr)
   (c-let ((cmd gk-cmd-b2-fixture-create :ptr ptr))
     (free (cmd :pathdef))
