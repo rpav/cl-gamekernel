@@ -57,6 +57,7 @@
    #:make-gk-cmd-b2-world-create
    #:make-gk-cmd-b2-world-destroy
    #:make-gk-cmd-b2-body-create
+   #:make-gk-cmd-b2-body-update
    #:make-gk-cmd-b2-body-destroy
    #:make-gk-cmd-b2-fixture-create
    #:free-gk-cmd-b2-fixture-create

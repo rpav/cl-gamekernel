@@ -74,12 +74,21 @@
   (c-let ((cmd gk-cmd-b2-body-create :calloc t))
     (autocollect (ptr) cmd
       (free-gk-cmd-b2-body-create ptr))
-    (setf (cmd :parent :type) :b2-body-create
+    (setf (cmd-type cmd) :b2-body-create
           (cmd :parent :key) key
           (cmd :world) world
           (cmd :ndefs) prealloc)
     (when (> prealloc 0)
       (setf (cmd :defs) (alloc :pointer prealloc)))
+    cmd))
+
+(defun make-gk-cmd-b2-body-update (body translate angle)
+  (c-let ((cmd gk-cmd-b2-body-update :calloc t))
+    (autocollect (ptr) cmd (free ptr))
+    (setf (cmd-type cmd) :b2-body-update
+          (cmd :body) body
+          (cmd :angle) angle)
+    (memcpy (cmd :translate) translate)
     cmd))
 
 (defun free-gk-cmd-b2-fixture-create (ptr)

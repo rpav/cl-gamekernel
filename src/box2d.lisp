@@ -58,6 +58,32 @@
   (c-val ((body gk-b2-body))
     (body :user-data)))
 
+ ;; Body Update
+
+(defun b2-body-update-body (body-update)
+  (c-val ((b gk-cmd-b2-body-update body-update))
+    (b :body)))
+
+(defun (setf b2-body-update-body) (v body-update)
+  (c-val ((b gk-cmd-b2-body-update body-update))
+    (setf (b :body) v)))
+
+(defun b2-body-update-translate (body-update)
+  (c-val ((b gk-cmd-b2-body-update body-update))
+    (b :translate)))
+
+(defun (setf b2-body-update-translate) (v body-update)
+  (c-val ((b gk-cmd-b2-body-update body-update))
+    (memcpy (b :translate) v)))
+
+(defun b2-body-update-angle (body-update)
+  (c-val ((b gk-cmd-b2-body-update body-update))
+    (b :angle)))
+
+(defun (setf b2-body-update-angle) (v body-update)
+  (c-val ((b gk-cmd-b2-body-update body-update))
+    (setf (b :angle) v)))
+
  ;; Body <-> Object associations
 
 (defun make-b2-body (&optional object)
