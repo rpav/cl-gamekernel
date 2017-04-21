@@ -133,9 +133,10 @@
           (cmd :friction) friction)
     (setf (cmd :update)
           (autowrap:mask-apply 'gk-b2-fixture-update-mask
-                               (list (and densityp :density)
-                                     (and elasticityp :elasticity)
-                                     (and frictionp :friction))))
+                               (delete-if #'null
+                                          (list (and densityp :density)
+                                                (and elasticityp :elasticity)
+                                                (and frictionp :friction)))))
     cmd))
 
 (defun make-gk-cmd-b2-iter-bodies (world)
