@@ -113,15 +113,15 @@
 
  ;; Text
 
-(define-simple-accessor gk-cmd-text text :break-width)
-(define-simple-accessor gk-cmd-text text (:pos :x))
-(define-simple-accessor gk-cmd-text text (:pos :y))
+(define-simple-accessor gk-cmd-text cmd-text :break-width)
+(define-simple-accessor gk-cmd-text cmd-text (:pos :x))
+(define-simple-accessor gk-cmd-text cmd-text (:pos :y))
 
-(defun text-string (cmd)
+(defun cmd-text-string (cmd)
   (c-val ((cmd gk-cmd-text))
     (cmd :str)))
 
-(defun (setf text-string) (v cmd)
+(defun (setf cmd-text-string) (v cmd)
   (c-val ((cmd gk-cmd-text))
     (unless (cffi:null-pointer-p (cmd :str * &))
       (free (cmd :str * &)))

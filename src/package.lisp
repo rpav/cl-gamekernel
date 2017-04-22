@@ -77,7 +77,7 @@
    #:font-style-line-height #:font-style-align
    #:quad-tex #:quad-tfm #:quad-attr
 
-   #:text-break-width #:text-x #:text-y #:text-string
+   #:cmd-text-break-width #:cmd-text-x #:cmd-text-y #:cmd-text-string
 
    #:vx #:vy #:vz #:vw #:v2= #:v3= #:v4=
    #:nv2+ #:nv3+ #:nv4+ #:nv2- #:nv3- #:nv4- #:nv2* #:nv3* #:nv4*
