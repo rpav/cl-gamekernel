@@ -51,6 +51,7 @@
 
    #:b2-fixture-update-density #:b2-fixture-update-elasticity
    #:b2-fixture-update-friction #:b2-fixture-update-mask
+   #:b2-fixture-update-sensorp
 
    #:b2-body-position #:b2-body-angle #:b2-body-is-awake
    #:b2-body-velocity #:b2-body-angular-velocity

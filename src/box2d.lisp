@@ -142,6 +142,14 @@
   (c-val ((f gk-cmd-b2-fixture-update))
     (setf (f :update) (autowrap:mask-apply 'gk.raw::gk-b2-fixture-update-mask v))))
 
+(defun b2-fixture-update-sensorp (f)
+  (c-val ((f gk-cmd-b2-fixture-update))
+    (= 1 (f :sensor))))
+
+(defun (setf b2-fixture-update-sensorp) (v f)
+  (c-val ((f gk-cmd-b2-fixture-update))
+    (setf (f :sensor) (if v 1 0))))
+
 
  ;; Step
 

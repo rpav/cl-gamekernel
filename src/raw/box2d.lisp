@@ -121,7 +121,11 @@
                                       &key (key 0)
                                       (density 0.0 densityp)
                                       (elasticity 0.0 elasticityp)
-                                      (friction 0.0 frictionp))
+                                      (friction 0.0 frictionp)
+                                      (sensorp nil sensorpp)
+                                      (category #x01 categoryp)
+                                      (mask #xFFFF maskp)
+                                      (group 0 groupp))
   (c-let ((cmd gk-cmd-b2-fixture-update :calloc t))
     (autocollect (ptr) cmd (free ptr))
     (setf (cmd :parent :type) :b2-fixture-update
@@ -130,13 +134,20 @@
           (cmd :id) id
           (cmd :density) density
           (cmd :elasticity) elasticity
-          (cmd :friction) friction)
+          (cmd :friction) friction
+          (cmd :sensor) (if sensorp 1 0)
+          (cmd :category) category
+          (cmd :mask) mask
+          (cmd :group) group)
     (setf (cmd :update)
           (autowrap:mask-apply 'gk-b2-fixture-update-mask
                                (delete-if #'null
                                           (list (and densityp :density)
                                                 (and elasticityp :elasticity)
-                                                (and frictionp :friction)))))
+                                                (and frictionp :friction)
+                                                (and sensorpp :sensor)
+                                                (and (or categoryp maskp groupp)
+                                                     :filter)))))
     cmd))
 
 (defun make-gk-cmd-b2-iter-bodies (world)
